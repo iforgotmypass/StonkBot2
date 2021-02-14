@@ -16,7 +16,7 @@ class Config(object):
     SCHEDULER_API_ENABLED = True
 
 
-czas = time.strftime('%d/%m/%Y -- %H:%M:%S')
+czas = time.strftime('%d/%m/%Y -- %H:%M:%S CET')
 stats = Screener().getData()
 
 
