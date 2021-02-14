@@ -9,9 +9,9 @@ def rowGetDataText(tr, coltag='td'):
 
 class Screener:
     def __init__(self):
-        self.url = ['https://finviz.com/screener.ashx?v=161&f=an_recom_buybetter%2Cfa_pb_o1%2Csh_curvol_o1000'
-                    '%2Csh_relvol_o3%2Cta_change_u2%2Cta_sma20_pa20%2Cta_sma200_pa50%2Cta_sma50_pa30&ft=4&o'
-                    '=-earningsdate']
+        self.url = ['https://finviz.com/screener.ashx?v=161&f=an_recom_buybetter,fa_pb_o1,sh_curvol_o5000,'
+                    'sh_float_o10,sh_relvol_o3,ta_change_u2,ta_sma20_pa20,ta_sma200_pa50,'
+                    'ta_sma50_pa30&ft=4&o=-earningsdate']
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/39.0.2171.95 Safari/537.36'

@@ -7,11 +7,12 @@ from flask_apscheduler import APScheduler
 import logging
 
 os.environ['TZ'] = 'Poland'
+time.tzset()
+
 sched = APScheduler()
 app = Flask(__name__)
 
 
-# time.tzset()
 class Config(object):
     SCHEDULER_API_ENABLED = True
 
