@@ -16,9 +16,10 @@ class Config(object):
 
 
 czas = time.strftime('%d/%m/%Y -- %H:%M:%S UTC')
+statsOld = Screener().getData()
 scr = ScreenerAPI()
 stats = scr.getHTML()
-statsOld = Screener().getData()
+
 
 
 @sched.task('cron', id='update', hour=13, minute=00)
