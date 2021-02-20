@@ -11,7 +11,7 @@ class ScreenerAPI:
         print('Starting...')
         self.__config = {
             'volume': 5000000,  # above
-            'priceMax': 3,  # lower than
+            'priceMax': 10,  # lower than
             'priceMin': 0.2,
             'percentGainMin': 2,
             'percentGainMax': 20,
@@ -173,6 +173,3 @@ class ScreenerAPI:
         table.to_csv(f'static/stonksFull.csv', index=False)
         table.to_csv(f'static/archive/stonksFull{czas}.csv', index=False)
         print("Exported to CSV.")
-
-scr = ScreenerAPI()
-print(scr.getHTML())
