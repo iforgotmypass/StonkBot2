@@ -1,18 +1,51 @@
 <!doctype html>
 <html lang="pl">
     <head>
-        <link rel="stylesheet" href="../static/bootstrap.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
         <title>stonkbot</title>
+        <style>table{
+            font-size: 12px;
+        }</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGGR228HT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-JGGR228HT6');
+        </script>
     </head>
     <body>
         {% block content %}
         {{data | safe}}
         {% endblock %}
         <div class="text-center">
-            <a href="../static/stonks.csv" class="btn btn-primary btn-lg" role="button" >Download csv</a>
+            <a href="{{ url_for('static', filename='stonksSimple.csv') }}" class="btn btn-dark btn-sm" role="button" >Simple csv</a>
+            <a href="{{ url_for('static', filename='stonksFull.csv') }}" class="btn btn-primary btn-sm" role="button" >Full csv</a>
             <strong><p>updated at {{time}}</p></strong>
             <p>data updates every day at 2PM CET (8AM EST)</p>
-            <a href="/about">about</a>
+            <div class="navmenu">
+                <a href="/about">about</a> /
+                <a href="/help">help</a> /
+                <a href="/archive">archive</a>
+            </div>
+            <a href="https://www.buymeacoffee.com/stonkscreener" class="btn btn-dark"><img src="{{ url_for('static', filename='bmc.png') }}"></a>
         </div>
+        <!-- START Bootstrap-Cookie-Alert -->
+        <div class="alert text-center cookiealert" role="alert">
+            <b>Do you like cookies?</b> &#x1F36A; Stonkscreener uses cookies to ensure you get the best experience on this website. <a href="https://cookiesandyou.com/" target="_blank">Learn more</a>
+        
+            <button type="button" class="btn btn-primary btn-sm acceptcookies">
+                I agree
+            </button>
+        </div>
+        <!-- END Bootstrap-Cookie-Alert -->
+        <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+        <div class="alert alert-warning text-center" style="max-width: 50%; margin-top: 10px; margin-left: auto; margin-right: auto;">
+            I'm going to implement a new version of stonkscreener on Monday. It will be based on EMA and VWAP. The old one will be still available of course!
+          </div>
+          
     </body>
 </html>

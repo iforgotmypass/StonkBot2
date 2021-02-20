@@ -1,17 +1,26 @@
 <!doctype html>
 <html lang="pl">
     <head>
-        <link rel="stylesheet" href="../static/bootstrap.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
         <title>stonkbot - about</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGGR228HT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-JGGR228HT6');
+        </script>
     </head>
     <body>
-        <div class="container-md" style="max-width: 75%; margin-top:10%;">
+        <div class="container-md" style="max-width: 75%; margin-top:5%; margin-bottom:5%;">
             <h2>about</h2>
             <p>it's a stock scanner based on <a href='https://www.reddit.com/user/alexsmith2332/'>u/alexsmith2332's</a> configuration from <a href='https://www.reddit.com/r/pennystocks/comments/l36uwg/a_scanner_which_has_got_me_a_pretty_good_success/'>this</a> post, containing some more improvements just to be safer</p>
             <p>it's checking indicators such as</p>
             <ul>
                 <li>20, 50, 200 day SMA less than current price</li>
-                <li>daily price change +2%</li>
+                <li>daily price change >2% and less than 20%</li>
                 <li>relative volume >3</li>
                 <li>current volume >5M</li>
                 <li>good recommendations</li>
@@ -22,8 +31,19 @@
             <p><strong>disclaimer: i am not a financial advisor, you should do your own dd before investing your money</strong></p>
             <h2>how to use it?</h2>
             <p>data refreshes every day at 2PM CET, that's something around 8AM EST</p>
-            <p><strong>if you want to use it, you should definitely read <a href='https://www.reddit.com/r/pennystocks/comments/lbgs07/how_to_filter_stocks_from_your_scanner_to_choose/'>this post</a></strong></p>
-            <a href="/">screener</a>
+            <p><strong>if you want to use it, you should definitely read <a href='https://www.reddit.com/r/pennystocks/comments/lbgs07/how_to_filter_stocks_from_your_scanner_to_choose/'>this post</a> and <a href="https://www.reddit.com/r/pennystocks/comments/lkbeg8/i_made_a_scanner_web_app_based_on_a_few_technicals/">this official post on reddit</a></strong></p>
+            <a href="https://www.buymeacoffee.com/stonkscreener" class="btn btn-dark"><img src="{{ url_for('static', filename='bmc.png') }}"></a>
+            <p>It's for free, but you can support me here! This will help me to improve this screener and add new features like:</p>
+            <ul>
+                <li>charts</li>
+                <li>news about found companies</li>
+                <li>SEC filings</li>
+            </ul>              
+            <div class="navmenu">
+                <a href="/">screener</a> /
+                <a href="/help">help</a> /
+                <a href="/archive">archive</a>
+            </div>         
         </div>
     </body>
 </html>
