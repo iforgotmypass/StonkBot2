@@ -22,8 +22,8 @@
         {{data | safe}}
         {% endblock %}
         <div class="text-center">
-            <a href="{{ url_for('static', filename='stonksSimple.csv') }}" class="btn btn-dark btn-sm" role="button" >Simple csv</a>
-            <a href="{{ url_for('static', filename='stonksFull.csv') }}" class="btn btn-primary btn-sm" role="button" >Full csv</a>
+            <a href="{{ url_for('static', filename=}}{{simple}}{{)}}" class="btn btn-dark btn-sm" role="button" >Simple csv</a>
+            <a href="{{ url_for('static', filename=}}{{full}}{{)}}" class="btn btn-primary btn-sm" role="button" >Full csv</a>
             <strong><p>updated at {{time}}</p></strong>
             <p>data updates every day at 3:30PM UTC (about 1hr after opening)</p>
             <div class="navmenu">

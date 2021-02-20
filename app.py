@@ -30,7 +30,9 @@ def getData():
 
 @app.route('/')
 def renderStats():
-    return render_template('stats.html', data=stats, time=czas)
+    return render_template('stats.html', data=stats, time=czas,
+                                         simple='static/stonksSimple.csv',
+                                         full='static/stonksFull.csv')
 
 
 @app.route('/about')
@@ -52,7 +54,9 @@ def renderArchive():
 @app.route('/old')
 def renderStatsOld():
     return render_template('stats.html', data=statsOld.to_html(classes="table table-hover table-striped",
-                                                               justify='center'), time=czas)
+                                                               justify='center'), time=czas,
+                                                               simple='static/stonksSimpleOld.csv',
+                                                               full='static/stonksFullOld.csv')
 
 
 if __name__ == '__main__':

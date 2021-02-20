@@ -62,8 +62,8 @@ class Screener:
     def getData(self):
         header = ["Ticker", "Price", "Change"]
         table = self.getTable()
-        table.loc[table["Change"] < 0.2].to_csv(f'static/stonksSimple.csv', columns=header)
-        table.loc[table["Change"] < 0.2].to_csv(f'static/stonksFull.csv')
+        table.loc[table["Change"] < 0.2].to_csv(f'static/stonksSimpleOld.csv', columns=header)
+        table.loc[table["Change"] < 0.2].to_csv(f'static/stonksFullOld.csv')
         table.loc[table["Change"] < 0.2].to_csv(f'static/archive/stonksFull{self.czas}.csv')
         stronki = table.loc[table["Change"] < 0.2]
         return stronki
