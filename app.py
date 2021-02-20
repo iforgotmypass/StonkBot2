@@ -16,7 +16,8 @@ class Config(object):
 
 
 czas = time.strftime('%d/%m/%Y -- %H:%M:%S UTC')
-stats = ScreenerAPI().getHTML()
+scr = ScreenerAPI()
+stats = scr.getHTML()
 statsOld = Screener().getData()
 
 

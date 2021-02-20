@@ -23,6 +23,7 @@ class ScreenerAPI:
         self.stonks = {}
         self.__periodsSinceOpening()
         self.__filterData()
+        self.getCSV()
 
     def __periodsSinceOpening(self):
         now = datetime.datetime.now()

@@ -64,6 +64,6 @@ class Screener:
         table = self.getTable()
         table.loc[table["Change"] < 0.2].to_csv(f'static/stonksSimpleOld.csv', columns=header)
         table.loc[table["Change"] < 0.2].to_csv(f'static/stonksFullOld.csv')
-        table.loc[table["Change"] < 0.2].to_csv(f'static/archive/stonksFull{self.czas}.csv')
+        table.loc[table["Change"] < 0.2].to_csv(f'static/archive/stonksFullOld{self.czas}.csv')
         stronki = table.loc[table["Change"] < 0.2]
         return stronki
