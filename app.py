@@ -30,9 +30,7 @@ def getData():
 
 @app.route('/')
 def renderStats():
-    return render_template('stats.html',
-                           data=stats,
-                           time=czas)
+    return render_template('stats.html', data=stats, time=czas)
 
 
 @app.route('/about')
@@ -49,6 +47,12 @@ def renderHelp():
 def renderArchive():
     stonklist = os.listdir('static/archive')
     return render_template('archive.html', len=len(stonklist), stonklist=stonklist)
+
+
+@app.route('/old')
+def renderStatsOld():
+    return render_template('stats.html', data=statsOld.to_html(classes="table table-hover table-striped",
+                                                               justify='center'), time=czas)
 
 
 if __name__ == '__main__':

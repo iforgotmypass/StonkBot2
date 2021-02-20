@@ -1,7 +1,9 @@
 import fmpsdk as fmp
-from datetime import datetime
+import datetime
 import time
 import pandas as pd
+from tqdm import tqdm
+from math import sqrt
 
 
 class ScreenerAPI:
@@ -9,24 +11,34 @@ class ScreenerAPI:
         print('Starting...')
         self.__config = {
             'volume': 5000000,  # above
-            'priceMax': 10,  # lower than
+            'priceMax': 3,  # lower than
             'priceMin': 0.2,
             'percentGainMin': 2,
             'percentGainMax': 20,
             'RVOLMin': 3,
             'EMA': 20,
-            'periods': 6
+            'periods': self.__periodsSinceOpening()
         }
-        self.__apikey = 'FMP API KEY'
-        self.now = datetime.now().strftime("%H:%M:%S")
-        self.czas = time.strftime('%d-%m-%Y')
+        self.__apikey = '187216e99799a61477ca9ac7dac75117'
         self.stonks = {}
+        self.__periodsSinceOpening()
         self.__filterData()
 
+    def __periodsSinceOpening(self):
+        now = datetime.datetime.now()
+        if now.isoweekday() <= 5 and now.hour < 21:
+            opening = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second)
+            diff = now - opening
+            return (diff.total_seconds() / 60) // 5
+        else:
+            return 79
+
     def __getRawData(self):
+        # Getting the company list from FMP
         companyList = fmp.stock_screener(self.__apikey,
                                          price_more_than=self.__config['priceMin'],
                                          price_lower_than=self.__config['priceMax'],
+                                         exchange=['NYSE', 'NASDAQ'],
                                          limit=10000)
         print('Getting RAW data...')
         return companyList
@@ -39,13 +51,14 @@ class ScreenerAPI:
             tickerList.append(company['symbol'])
         # need to divide the list into chunks - API accepts requests with max ~1200 tickers
         tickerListChunks = (lambda lst: [lst[i:i + 1000] for i in range(0, len(lst), 1000)])(tickerList)
-        i = 1
-        for chunk in tickerListChunks:
-            print(f'Filtering chunk number {i}.')
-            i += 1
+        j = 1
+        print('Scanning chunks...')
+        for chunk in tqdm(tickerListChunks):
+            j += 1
             data = fmp.quote(self.__apikey, chunk)
             self.__preliminaryFilter(data)
-        for stonk in self.stonks:
+        print('Scanning stocks...')
+        for stonk in tqdm(self.stonks):
             self.stonks[stonk]['dataFull'] = fmp.technical_indicators(apikey=self.__apikey,
                                                                       symbol=stonk,
                                                                       period=self.__config['EMA'],
@@ -56,6 +69,7 @@ class ScreenerAPI:
         self.__calculateVWAP()
         self.__checkVWAP()
         self.__removeData()  # removing dataFull, data, vwap
+        print(f'Done, found {len(self.stonks)} stocks.')
         print(f"--- exec time {time.time() - start_time} seconds ---")
 
     def __preliminaryFilter(self, data):
@@ -79,11 +93,12 @@ class ScreenerAPI:
                 pass
 
     def __checkEMA(self):
+        # Checking if price is above EMA.
         x = []
         for stonk in self.stonks:
             dataFull = self.stonks[stonk]['dataFull']
             data = self.stonks[stonk]['dataFull'][0]
-            if data['close'] > data['ema']:
+            if data['close'] >= data['ema']:
                 self.stonks[stonk]['vwap'] = {
                     i: dataFull[i] for i in range(self.__config['periods'])
                 }
@@ -94,24 +109,34 @@ class ScreenerAPI:
         print('EMA Checked.')
 
     def __calculateVWAP(self):
+        # Calculating the 0.5 standard deviation band for VWAP.
         for stonk in self.stonks:
             num = 0
             denom = 0
-            for i in range(self.__config['periods'] - 1):
+            variance = 0
+            for i in range(self.__config['periods']):
                 price = (self.stonks[stonk]['vwap'][i]['high'] + self.stonks[stonk]['vwap'][i]['low'] +
                          self.stonks[stonk]['vwap'][i]['close']) / 3
-                volume = self.stonks[stonk]['vwap'][i]['volume'] - self.stonks[stonk]['vwap'][i + 1]['volume']
+                volume = self.stonks[stonk]['vwap'][i]['volume']
                 if volume < 0:
                     volume = 0
                 priceVol = price * volume
                 num += priceVol
                 denom += volume
+                try:
+                    vwap = num / denom
+                    variance += ((price - vwap) ** 2) * volume
+                except:
+                    print(f'Failed to calculate VWAP/Variance for {stonk}')
             try:
-                self.stonks[stonk]['vwap'] = num / denom
+                vwap = num / denom
+                sigma = sqrt(variance)
+                offset = sigma / sqrt(denom)
+                self.stonks[stonk]['vwap'] = vwap + 0.5 * offset
+                print(f'{stonk} - {self.stonks[stonk]["vwap"]}')
             except:
                 self.stonks[stonk]['vwap'] = 0
-        print('VWAP Calculated.')
-
+        print('VWAP calculated.')
 
     def __checkVWAP(self):
         x = []
@@ -138,12 +163,16 @@ class ScreenerAPI:
     def getHTML(self):
         return self.getDataFrame().to_html(index=False,
                                            classes="table table-hover table-striped",
-                                           justify='center')
+                                           justify='left')
 
     def getCSV(self):
+        czas = time.strftime('%d-%m-%Y')
         header = ["symbol", "price", "change percent"]
         table = self.getDataFrame()
         table.to_csv(f'static/stonksSimple.csv', columns=header, index=False)
         table.to_csv(f'static/stonksFull.csv', index=False)
-        table.to_csv(f'static/archive/stonksFull{self.czas}.csv', index=False)
+        table.to_csv(f'static/archive/stonksFull{czas}.csv', index=False)
         print("Exported to CSV.")
+
+scr = ScreenerAPI()
+print(scr.getHTML())
