@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl">
+    <head>
+        <link rel="stylesheet" href="../static/bootstrap.css">
+        <title>stonkbot - {% block title %}{% endblock %}</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGGR228HT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-JGGR228HT6');
+        </script>
+    </head>
+    <body>
+        <div class="container-md" style="max-width: 75%; margin-top:5%; margin-bottom:5%;">
+            <h2>archive</h2>
+            <ul>
+                {%for i in range(0, len)%}
+                    <li><a href="{{ url_for('static', filename='archive/') }}{{ stonklist[i] }}">{{ stonklist[i] }}</a></li>
+                {%endfor%}
+            </ul>
+            <div class="navmenu">
+                <a href="/">screener</a> /
+                <a href="/about">about</a> /
+                <a href="/help">help</a>
+            </div>
+        </div>
+    </body>
+</html>

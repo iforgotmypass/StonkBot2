@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pl">
+
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+        <title>stonkbot - help</title>
+        <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGGR228HT6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-JGGR228HT6');
+        </script>
+    </head>
+
+    <body>
+        <div class="container-md" style="max-width: 75%; margin-top:5%; margin-bottom:5%;">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>basic financial terms used here</h3>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Market Capitalization
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Market capitalization, commonly called market cap, is the market value of a publicly
+                                    traded company's outstanding shares.
+                                    <a href="https://en.wikipedia.org/wiki/Market_capitalization">More...</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Dividend
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    A dividend is a distribution of profits by a corporation to its shareholders. <a
+                                        href="https://en.wikipedia.org/wiki/Dividend">More...</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Return on assets
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    The return on assets (ROA) shows the percentage of how profitable a company's assets
+                                    are in generating revenue. <a
+                                        href="https://en.wikipedia.org/wiki/Return_on_assets">More...</a>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Return on equity
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        The return on equity (ROE) is a measure of the profitability of a business in
+                                        relation to the equity. <a
+                                            href="https://en.wikipedia.org/wiki/Return_on_equity">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        Return on investment
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Return on investment (ROI) or return on costs (ROC) is a ratio between net
+                                        income (over a period) and investment (costs resulting from an investment of
+                                        some resources at a point in time). <a
+                                            href="https://en.wikipedia.org/wiki/Return_on_investment">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        Current ratio
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        The current ratio is a liquidity ratio that measures whether a firm has enough
+                                        resources to meet its short-term obligations. <a
+                                            href="https://en.wikipedia.org/wiki/Current_ratio">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading6">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                        Quick Ratio
+                                    </button>
+                                </h2>
+                                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        In finance, the quick ratio, also known as the acid-test ratio is a type of
+                                        liquidity ratio, which measures the ability of a company to use its near cash or
+                                        quick assets to extinguish or retire its current liabilities immediately. <a
+                                            href="https://en.wikipedia.org/wiki/Quick_ratio">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading7">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                        Debt to equity ratio
+                                    </button>
+                                </h2>
+                                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        The debt-to-equity ratio (D/E) is a financial ratio indicating the relative
+                                        proportion of shareholders' equity and debt used to finance a company's assets.
+                                        <a href="https://en.wikipedia.org/wiki/Debt-to-equity_ratio">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading8">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                        Gross Margin
+                                    </button>
+                                </h2>
+                                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Gross margin is the difference between revenue and cost of goods sold (COGS),
+                                        divided by revenue. <a
+                                            href="https://en.wikipedia.org/wiki/Gross_margin">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading9">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                        Operating margin
+                                    </button>
+                                </h2>
+                                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        In business, operating margin—also known as operating income margin, operating
+                                        profit margin, EBIT margin and return on sales (ROS)—is the ratio of operating
+                                        income to net sales, usually expressed in percent. <a
+                                            href="https://en.wikipedia.org/wiki/Operating_margin">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                    Profit margin
+                                </button>
+                            </h2>
+                            <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Profit margin, net margin, net profit margin or net profit ratio is a measure of
+                                    profitability. It is calculated by finding the net profit as a percentage of the
+                                    revenue. <a href="https://en.wikipedia.org/wiki/Profit_margin">More...</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                    Earnings
+                                </button>
+                            </h2>
+                            <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Date of earnings announciation. <a
+                                        href="https://en.wikipedia.org/wiki/Earnings">More...</a>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading12">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                        Volume
+                                    </button>
+                                </h2>
+                                <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        In capital markets, volume, or trading volume, is the amount (total number) of a
+                                        security (or a given set of securities, or an entire market) that was traded
+                                        during a given period of time. <a
+                                            href="https://en.wikipedia.org/wiki/Volume_(finance)">More...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-6">
+                    <h3>helpful links</h3>
+                    <h5><a
+                            href="https://www.reddit.com/r/pennystocks/comments/lkbeg8/i_made_a_scanner_web_app_based_on_a_few_technicals/">official
+                            post on r/pennystocks</a></h5>
+                    <h5><a
+                            href="https://www.reddit.com/r/pennystocks/comments/l36uwg/a_scanner_which_has_got_me_a_pretty_good_success/">u/alexsmith2332's
+                            scanner</a></h5>
+                    <h5><a
+                            href="https://www.reddit.com/r/pennystocks/comments/lbgs07/how_to_filter_stocks_from_your_scanner_to_choose/">how
+                            to filter stocks from your scanner</a></h5>
+                    <h5><a
+                            href="https://www.reddit.com/r/pennystocks/comments/ljj57a/how_to_recognize_a_pump_and_dump/">how
+                            to recognize pump & dump</a></h5>
+                    <h5><a href="https://www.reddit.com/r/PennyStockTraining/">basic guides for success</a></h5>
+                    <p></p>
+                    <div class="navmenu">
+                        <a href="/">screener</a> /
+                        <a href="/about">about</a> /
+                        <a href="/archive">archive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
