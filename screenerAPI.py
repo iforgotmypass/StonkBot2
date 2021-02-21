@@ -23,7 +23,6 @@ class ScreenerAPI:
         self.stonks = {}
         self.__periodsSinceOpening()
         self.__filterData()
-        self.getCSV()
 
     def __periodsSinceOpening(self):
         now = datetime.datetime.now()
@@ -82,8 +81,8 @@ class ScreenerAPI:
                     self.stonks[company['symbol']] = {
                         'symbol': company['symbol'],
                         'exchange': company['exchange'],
-                        'earnings': company['earningsAnnouncement'],
-                        'market cap': company['marketCap'],
+                        'earnings': datetime.datetime.fromisoformat(company['earningsAnnouncement'][:-5]),
+                        'market cap': "{:d}".format(int(company['marketCap'])),
                         'price': company['price'],
                         'change': company['change'],
                         'change percent': company['changesPercentage'],
