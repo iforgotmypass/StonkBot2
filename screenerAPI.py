@@ -29,7 +29,7 @@ class ScreenerAPI:
         if now.isoweekday() <= 5 and now.hour < 21:
             opening = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second)
             diff = now - opening
-            return (diff.total_seconds() / 60) // 5
+            return int((diff.total_seconds() / 60) // 5)
         else:
             return 79
 
