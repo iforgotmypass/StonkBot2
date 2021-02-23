@@ -1,4 +1,4 @@
-# wersja 23.02.2021
+# wersja 24.02.2021
 import os
 import time
 from flask import Flask, render_template
