@@ -1,3 +1,3 @@
-# StonkBot2
+# Screener
 
 stock scanner, demo: https://stonkscreener.herokuapp.com
