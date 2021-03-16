@@ -3,7 +3,7 @@ from datetime import datetime
 import time
 import pandas as pd
 
-
+#16.03.2021
 class ScreenerAPI:
     def __init__(self):
         print('Starting...')
