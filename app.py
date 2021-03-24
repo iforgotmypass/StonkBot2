@@ -17,8 +17,8 @@ class Config(object):
 
 czas = time.strftime('%d/%m/%Y -- %H:%M:%S UTC')
 statsOld = Screener().getData()
-# scr = ScreenerAPI()
-# stats = scr.getHTML()
+scr = ScreenerAPI()
+stats = scr.getHTML()
 
 
 
@@ -30,11 +30,11 @@ def getData():
     stats = tabela.getHTML()
 
 
-# @app.route('/')
-# def renderStats():
-#     return render_template('stats.html', data=stats, time=czas,
-#                                          simple='stonksSimple.csv',
-#                                          full='stonksFull.csv')
+@app.route('/')
+def renderStats():
+    return render_template('stats.html', data=stats, time=czas,
+                                         simple='stonksSimple.csv',
+                                         full='stonksFull.csv')
 
 
 @app.route('/about')
@@ -53,7 +53,7 @@ def renderArchive():
     return render_template('archive.html', len=len(stonklist), stonklist=stonklist)
 
 
-@app.route('/')
+@app.route('/old')
 def renderStatsOld():
     return render_template('stats.html', data=statsOld.to_html(classes="table table-hover table-striped",
                                                                justify='center'), time=czas,
