@@ -19,7 +19,7 @@ class ScreenerAPI:
             'EMA': 20,
             'periods': self.__periodsSinceOpening()
         }
-        self.__apikey = '187216e99799a61477ca9ac7dac75117'
+        self.__apikey = 'API_KEY'
         self.stonks = {}
         self.__periodsSinceOpening()
         self.__filterData()
